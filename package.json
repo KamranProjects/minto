@@ -1,0 +1,84 @@
+{
+  "name": "minto",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A quiet, offline desktop task timer.",
+  "main": "dist-electron/electron/main.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1",
+    "build:electron": "tsc -p tsconfig.electron.json && node scripts/copy-preload.mjs",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "build": "npm run typecheck && vite build && npm run build:electron",
+    "start": "electron .",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsx --test tests/*.test.ts",
+    "format": "prettier --write src electron tests scripts vite.config.ts tsconfig.json tsconfig.electron.json package.json index.html",
+    "format:check": "prettier --check src electron tests scripts vite.config.ts tsconfig.json tsconfig.electron.json package.json index.html",
+    "test:electron": "npm run build && electron tests/electron-smoke.cjs",
+    "package:win": "npm run build && electron-builder --win portable nsis",
+    "package:mac": "npm run build && electron-builder --mac dmg --x64 --arm64"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.4",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "electron": "44.7.0",
+    "electron-builder": "^26.15.3",
+    "lucide-react": "^1.31.0",
+    "prettier": "3.9.9",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vite": "8.3.4"
+  },
+  "build": {
+    "appId": "org.cozyfocus.desktop",
+    "productName": "Minto",
+    "executableName": "Minto",
+    "asar": true,
+    "electronDist": "node_modules/electron/dist",
+    "electronLanguages": [
+      "en-US"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json",
+      "!dist/fonts/FlameBold.ttf"
+    ],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ],
+      "icon": "build/icon.ico",
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Minto-Setup-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Minto-Portable-${version}-${arch}.${ext}"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/minto-icon.png"
+    },
+    "dmg": {
+      "artifactName": "Minto-${version}-${arch}.${ext}"
+    }
+  }
+}

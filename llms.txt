@@ -1,0 +1,14 @@
+# Minto
+
+Minto is an open-source, offline desktop task timer for Windows. It helps people plan a short daily task list, focus on one task with a countdown, and review their focused time. It has a compact, draggable, optionally always-on-top timer window.
+
+Minto runs locally with Electron, React, and TypeScript. It does not require an account or an internet connection for normal use. It does not provide AI features, cloud sync, subscriptions, notes, or calendar integration.
+
+Minto is an independent project. It is not affiliated with TickTick or Llama Life. It does not use their code or assets.
+
+## Project files
+
+- [README](README.md): features, screenshots, Windows downloads, data location, and usage.
+- [Developer guide](docs/DEVELOPER.md): architecture, persistence, timer rules, testing, and packaging.
+- [Contributing](CONTRIBUTING.md): contribution guidance.
+- [License](LICENSE): MIT license for the code.
