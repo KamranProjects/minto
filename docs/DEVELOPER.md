@@ -156,4 +156,4 @@ For a new task action, define its typed payload in `Command`, validate and imple
 | Portable build is missing Flame headings         | The font is excluded from distribution until its redistribution rights are supplied.                                                    |
 | Windows warns about publisher                    | The Windows builds are unsigned.                                                                                                 |
 
-The repository has no auto-update service or sync backend. The manually triggered macOS workflow runs tests and builds unsigned DMGs on a macOS runner; publish those only after its result and download are checked.
+The repository has no auto-update service or sync backend. The manually triggered macOS workflow runs tests and builds unsigned DMGs on a macOS runner. The separate publish workflow can attach artifacts from a successful run to an existing release. Both Mac downloads are unnotarized; no Mac signing identity is configured.

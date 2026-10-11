@@ -41,4 +41,4 @@ jobs:
           test -f "release/Minto-${version}-x64.dmg"
           test -f "release/Minto-${version}-arm64.dmg"
           sha256sum release/*.dmg
-          gh release upload "$RELEASE_TAG" release/*.dmg --clobber
+          gh release upload "$RELEASE_TAG" release/*.dmg

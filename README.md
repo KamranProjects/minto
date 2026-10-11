@@ -33,6 +33,8 @@ Minto has no account, onboarding, subscription, AI feature, cloud sync, telemetr
 
 On Windows, download the [latest Minto release](https://github.com/KamranProjects/minto/releases/latest). Choose **Setup** for a normal installation or **Portable** to run Minto without installing it. Neither requires Node.js. The downloads are currently unsigned, so Windows may ask you to confirm the publisher warning.
 
+On macOS, use the **arm64 DMG** for Apple Silicon or the **x64 DMG** for an Intel Mac from the same release. The Mac builds passed automated tests on a macOS runner, but they are unsigned and unnotarized, so macOS may block them. These downloads also do not require Node.js.
+
 To run from source, use Node.js **22.16 or newer** and npm. On Windows, from the project folder:
 
 ```sh
@@ -55,7 +57,7 @@ To create Windows installer and portable downloads:
 npm run package:win
 ```
 
-Find `Minto-Setup-<version>-x64.exe` and `Minto-Portable-<version>-x64.exe` in `release/`. Neither download requires Node.js. These builds are unsigned, so Windows may show a publisher warning. They include Electron, the compiled app in `app.asar`, and only Electron's English locale. Build tools are excluded from the app; keep dev dependencies installed while building. Windows is the verified release target. A [manual macOS workflow](.github/workflows/macos-dmg.yml) tests and builds unsigned `.dmg` files on a Mac runner; its output must pass before being offered as a download.
+Find `Minto-Setup-<version>-x64.exe` and `Minto-Portable-<version>-x64.exe` in `release/`. Neither download requires Node.js. These builds are unsigned, so Windows may show a publisher warning. They include Electron, the compiled app in `app.asar`, and only Electron's English locale. Build tools are excluded from the app; keep dev dependencies installed while building. A [manual macOS workflow](.github/workflows/macos-dmg.yml) tests and builds unsigned `.dmg` files on a Mac runner before they are added to a release.
 
 ## Using Minto
 
