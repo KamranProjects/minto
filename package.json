@@ -22,7 +22,7 @@
     "format:check": "prettier --check src electron tests scripts vite.config.ts tsconfig.json tsconfig.electron.json package.json index.html",
     "test:electron": "npm run build && electron tests/electron-smoke.cjs",
     "package:win": "npm run build && electron-builder --win portable nsis",
-    "package:mac": "npm run build && electron-builder --mac dmg --x64 --arm64"
+    "package:mac": "npm run build && electron-builder --mac dmg --x64 --arm64 --publish never"
   },
   "devDependencies": {
     "@types/node": "26.6.4",
