@@ -31,7 +31,9 @@ Minto has no account, onboarding, subscription, AI feature, cloud sync, telemetr
 
 ## Install and run
 
-Use Node.js **22.16 or newer** and npm. On Windows, from the project folder:
+On Windows, download the [latest Minto release](https://github.com/KamranProjects/minto/releases/latest). Choose **Setup** for a normal installation or **Portable** to run Minto without installing it. Neither requires Node.js. The downloads are currently unsigned, so Windows may ask you to confirm the publisher warning.
+
+To run from source, use Node.js **22.16 or newer** and npm. On Windows, from the project folder:
 
 ```sh
 npm ci
