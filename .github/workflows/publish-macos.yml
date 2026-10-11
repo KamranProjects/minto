@@ -1,0 +1,44 @@
+name: Publish verified macOS DMGs
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Successful macOS DMG build run ID
+        required: true
+        type: string
+      tag:
+        description: Existing release tag
+        required: true
+        default: v1.0.0
+        type: string
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: minto-macos-dmg
+          run-id: ${{ inputs.run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: release
+      - name: Verify and upload DMGs
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${RELEASE_TAG#v}"
+          test -f "release/Minto-${version}-x64.dmg"
+          test -f "release/Minto-${version}-arm64.dmg"
+          sha256sum release/*.dmg
+          gh release upload "$RELEASE_TAG" release/*.dmg --clobber
