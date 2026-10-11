@@ -33,7 +33,7 @@ Minto has no account, onboarding, subscription, AI feature, cloud sync, telemetr
 
 On Windows, download the [latest Minto release](https://github.com/KamranProjects/minto/releases/latest). Choose **Setup** for a normal installation or **Portable** to run Minto without installing it. Neither requires Node.js. The downloads are currently unsigned, so Windows may ask you to confirm the publisher warning.
 
-On macOS, use the **arm64 DMG** for Apple Silicon or the **x64 DMG** for an Intel Mac from the same release. The Mac builds passed automated tests on a macOS runner, but they are unsigned and unnotarized, so macOS may block them. These downloads also do not require Node.js.
+On macOS, use the **arm64 DMG** for Apple Silicon or the **x64 DMG** for an Intel Mac from the same release. The source passed unit and Electron smoke tests on a Mac runner, and both DMGs built there; the arm64 package was not launched on Apple Silicon. Both are unsigned and unnotarized, so macOS may block them. These downloads also do not require Node.js.
 
 To run from source, use Node.js **22.16 or newer** and npm. On Windows, from the project folder:
 
